@@ -1,0 +1,22 @@
+{
+  "name": "componentits",
+  "version": "1.0.0",
+  "description": "component for mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrongVT/ComponentKiOp.git"
+  },
+  "keywords": [
+    "component-ki-op"
+  ],
+  "author": "kiop",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TrongVT/ComponentKiOp/issues"
+  },
+  "homepage": "https://github.com/TrongVT/ComponentKiOp#readme"
+}
