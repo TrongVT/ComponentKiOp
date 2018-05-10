@@ -94,9 +94,11 @@ export default class ModalPicker extends React.Component {
   }
 
   open() {
+    if (!this.props.disabled) {
     this.setState({
       modalVisible: true
     });
+  }
   }
 
   renderSection(section, i) {
