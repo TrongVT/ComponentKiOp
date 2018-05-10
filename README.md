@@ -39,6 +39,7 @@ import Picker from 'componentits'
 
 ## Props
 
+* `disabled - bool` , optional, enabled picker
 * `data - []` required, array of objects with a unique key and label
 * `style - object` optional, style definitions for the root element
 * `onChange - function` optional, callback function, when the users has selected an option
