@@ -16,10 +16,7 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from 'react-native'
-// import get from 'lodash/get'
-// import reject from 'lodash/reject'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-
 import { RowItem, RowSubItem } from './components'
 
 const Touchable = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
@@ -95,7 +92,6 @@ const styles = {
   },
 }
 
-// let date = new Date()
 
 const noResults = <Text>Sorry, no results</Text>
 
