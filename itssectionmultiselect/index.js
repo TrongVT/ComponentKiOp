@@ -107,6 +107,7 @@ const loading = (
 
 class SectionedMultiSelect extends PureComponent {
   static propTypes = {
+    disabled: PropTypes.bool,
     single: PropTypes.bool,
     selectedItems: PropTypes.array,
     items: PropTypes.array.isRequired,
@@ -161,6 +162,7 @@ class SectionedMultiSelect extends PureComponent {
   }
 
   static defaultProps = {
+    disabled:false,
     single: false,
     selectedItems: [],
     displayKey: 'name',
@@ -203,9 +205,7 @@ class SectionedMultiSelect extends PureComponent {
     showCancelButton: false,
     hideSelect: false,
     alwaysShowSelectText: false,
-
   }
-
   constructor(props) {
     super(props)
 
@@ -345,37 +345,12 @@ class SectionedMultiSelect extends PureComponent {
   }
 
 
-  // _removeItems = (items) => {
-  //   const {
-  //     uniqueKey,
-  //     selectedItems,
-  //     onSelectedItemsChange,
-  //     highlightChildren,
-  //     onSelectedItemObjectsChange,
-  //   } = this.props
-
-  //   const newItems = selectedItems
-  //   const filtered = newItems.filter( el => !items.includes( el ) );
-
-  //   if (highlightChildren) {
-  //     // wut
-  //     items.forEach((item) => {
-  //       this._unHighlightChildren(item)
-  //     })
-  //     filtered.forEach((item) => {
-  //       this._highlightChildren(item)
-  //     })
-  //   }
-  //   onSelectedItemObjectsChange && this._broadcastItemObjects(filtered)
-
-  //   // broadcast new selected items state to parent component
-  //   onSelectedItemsChange(filtered)
-  // }
-
   _toggleSelector = () => {
-    this.setState({
-      selector: !this.state.selector,
-    })
+    if(this.props.disabled){
+      this.setState({
+        selector: !this.state.selector,
+      })
+    }
   }
 
   _submitSelection = () => {
