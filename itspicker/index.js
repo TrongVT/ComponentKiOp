@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ViewPropTypes
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "react-native-vector-icons";
 
 let componentIndex = 0;
 
