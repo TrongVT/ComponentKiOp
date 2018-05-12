@@ -1,6 +1,6 @@
 {
   "name": "componentits",
-  "version": "1.0.20",
+  "version": "1.0.19",
   "description": "Component for mobile",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/TrongVT/ComponentKiOp/issues"
   },
-  "homepage": "https://github.com/TrongVT/ComponentKiOp#readme"
+  "homepage": "https://github.com/TrongVT/ComponentKiOp#readme",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react-native-vector-icons": "^4.1.1",
+    "react": "16.2.0",
+    "react-native": "~0.54.4"
+  }
 }
