@@ -1,2 +1,3 @@
 import Picker from './itspicker'
-export {Picker};
+import SectionMultiSelect from './itssectionmultiselect'
+export {Picker,SectionMultiSelect};
