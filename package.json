@@ -1,6 +1,6 @@
 {
   "name": "componentits",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Component for mobile",
   "main": "index.js",
   "scripts": {
