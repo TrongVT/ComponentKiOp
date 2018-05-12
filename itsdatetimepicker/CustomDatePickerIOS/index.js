@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { DatePickerIOS, Text, TouchableHighlight, View } from "react-native";
-import { DatePickerIOS, Text, TouchableHighlight, View } from "react-native";
 import ReactNativeModal from "react-native-modal";
 
 import styles from "./index.style";
