@@ -22,6 +22,7 @@
   "homepage": "https://github.com/TrongVT/ComponentKiOp#readme",
   "dependencies": {
     "prop-types": "^15.6.1",
+    "react-native-modal": "^5.4.0",
     "react-native-vector-icons": "^4.1.1",
     "react": "16.2.0",
     "react-native": "~0.54.4"

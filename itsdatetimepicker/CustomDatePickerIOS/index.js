@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { DatePickerIOS, Text, TouchableHighlight, View,Modal } from "react-native";
+import { DatePickerIOS, Text, TouchableHighlight, View } from "react-native";
+import ReactNativeModal from "react-native-modal";
+
 import styles from "./index.style";
 
 export default class CustomDatePickerIOS extends React.PureComponent {
@@ -152,7 +154,7 @@ export default class CustomDatePickerIOS extends React.PureComponent {
     const DatePickerComponent = customDatePickerIOS || DatePickerIOS;
 
     return (
-      <Modal
+      <ReactNativeModal
         isVisible={isVisible}
         style={[styles.contentContainer, contentContainerStyleIOS]}
         onModalHide={this._handleOnModalHide}
@@ -199,7 +201,7 @@ export default class CustomDatePickerIOS extends React.PureComponent {
         >
           {customCancelButtonIOS || cancelButton}
         </TouchableHighlight>
-      </Modal>
+      </ReactNativeModal>
     );
   }
 }
