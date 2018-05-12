@@ -1,6 +1,6 @@
 {
   "name": "componentits",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Component for mobile",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/TrongVT/ComponentKiOp.git"
   },
-  "keywords": ["componentits", "react-native"],
+  "keywords": [
+    "componentits",
+    "react-native"
+  ],
   "author": "kiop",
   "license": "ISC",
   "bugs": {
@@ -20,7 +23,6 @@
   "dependencies": {
     "react-native-vector-icons": "^4.1.1",
     "react": "16.2.0",
-    "react-native":
-      "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz"
   }
 }
