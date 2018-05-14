@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/TrongVT/ComponentKiOp#readme",
   "dependencies": {
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react-native-modal": "^5.4.0",
     "react-native-vector-icons": "^4.1.1"
