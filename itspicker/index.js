@@ -228,7 +228,7 @@ export default class ModalPicker extends React.Component {
 
   render() {
     return (
-      <View style={[this.props.style]}>
+      <TouchableOpacity onPress={() => this.open()}>
         <Modal
           supportedOrientations={["portrait", "landscape"]}
           transparent={true}
@@ -241,7 +241,6 @@ export default class ModalPicker extends React.Component {
         >
           {this.renderOptionList()}
         </Modal>
-        <TouchableOpacity onPress={() => this.open()}>
           <View
             style={[
               {
@@ -279,9 +278,8 @@ export default class ModalPicker extends React.Component {
               {this.covertlabel(this.state.selected)}
             </Text>
             <Text />
-          </View>
+            </View>
         </TouchableOpacity>
-      </View>
     );
   }
 }
