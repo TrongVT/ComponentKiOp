@@ -228,7 +228,7 @@ export default class ModalPicker extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={() => this.open()}>
+      <TouchableOpacity style={this.props.style} onPress={() => this.open()}>
         <Modal
           supportedOrientations={["portrait", "landscape"]}
           transparent={true}
