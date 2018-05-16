@@ -95,10 +95,10 @@ export default class ModalPicker extends React.Component {
 
   open() {
     if (!this.props.disabled) {
-    this.setState({
-      modalVisible: true
-    });
-  }
+      this.setState({
+        modalVisible: true
+      });
+    }
   }
 
   renderSection(section, i) {
@@ -241,45 +241,30 @@ export default class ModalPicker extends React.Component {
         >
           {this.renderOptionList()}
         </Modal>
-          <View
+        <View
+          style={[
+            {
+              flex: 1,
+              height: 30,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between"
+            },
+            this.props.selectStyle
+          ]}
+        >
+          <Text
             style={[
-              {
-                flex: 1,
-                height: 30,
-                flexDirection: "row",
-                alignItems: "center"
-              },
-              this.props.selectStyle
+              { color: "#333", fontSize: 16, paddingRight: 22 },
+              this.props.selectTextStyle
             ]}
           >
-            <View
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: 20,
-                height: 30,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <MaterialCommunityIcons
-                name="menu-down"
-                size={22}
-                color="#20b2aa"
-              />
-            </View>
-            <Text
-              style={[
-                { color: "#333", fontSize: 16, paddingRight: 22 },
-                this.props.selectTextStyle
-              ]}
-            >
-              {this.covertlabel(this.state.selected)}
-            </Text>
-            <Text />
-            </View>
-        </TouchableOpacity>
+            {this.covertlabel(this.state.selected)}
+          </Text>
+          <Text />
+          <MaterialCommunityIcons name="menu-down" size={22} color="#20b2aa" />
+        </View>
+      </TouchableOpacity>
     );
   }
 }
