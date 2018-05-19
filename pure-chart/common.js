@@ -355,7 +355,7 @@ export const drawXAxisLabels = (sortedData, gap, color = "#000000") => {
                 width: gap,
               }}
             >
-              <Text style={{ fontSize: 6, color: color,  transform: [{ rotate: '30deg'}]}}>
+              <Text style={{ fontSize: 8, color: color,  transform: [{ rotate: '30deg'}]}}>
                 {
                   // data[3]
                   data["x"]

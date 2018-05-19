@@ -73,6 +73,29 @@ export default class ColumnChart extends Component {
       selectedIndex: index
     })
   }
+
+  drawlegend(fadeAnim){
+    let seriesArray = this.state.sortedData
+      let renderLegend =[]
+      seriesArray.forEach((e,i) => {
+        renderLegend.push(
+          <View  key ={'legend'+i} style ={{flexDirection:"row", marginRight:8, alignItems:"center"}} >
+          <View style ={{width:10, height:10,borderRadius:5, backgroundColor:e.seriesColor,  marginRight:5}}/>
+          <Text>{e.seriesName}</Text>
+        </View>
+        )
+     
+      });
+
+    return (
+      <Animated.View style={ { transform: [{scaleY: fadeAnim}], flexDirection:"row" }}>
+        {renderLegend}
+      </Animated.View>
+
+    )
+  }
+
+
   drawTooltip (selectedIndex) {
     if (typeof (selectedIndex) === 'number' && selectedIndex >= 0) {
       let standardSeries = this.state.sortedData[0]
@@ -134,6 +157,7 @@ export default class ColumnChart extends Component {
           {drawYAxisLabels(this.state.guideArray, this.props.height + 20, this.props.minValue, this.props.labelColor)}
         </View>
         <View style={styles.mainContainer}>
+        {this.drawlegend(fadeAnim)}
           <ScrollView horizontal>
             <View>
               <View ref='chartView' style={styles.chartContainer}>
