@@ -130,6 +130,28 @@ class LineChart extends React.Component {
     )
   }
 
+  drawlegend(fadeAnim){
+    let seriesArray = this.state.sortedData
+      let renderLegend =[]
+      seriesArray.forEach((e,i) => {
+        renderLegend.push(
+          <View  key ={'legend'+i} style ={{flexDirection:"row", marginRight:8, alignItems:"center"}} >
+          <View style ={{width:10, height:10,borderRadius:5, backgroundColor:e.seriesColor,  marginRight:5}}/>
+          <Text>{e.seriesName}</Text>
+        </View>
+        )
+     
+      });
+
+    return (
+      <Animated.View style={ { transform: [{scaleY: fadeAnim}], flexDirection:"row" }}>
+        {renderLegend}
+      </Animated.View>
+
+    )
+  }
+
+
   drawPoint (index, point, seriesColor) {
     let key = 'point' + index
     let size = 8
@@ -255,7 +277,7 @@ class LineChart extends React.Component {
               return (
                 <View key={series.seriesName}>
                   {dataObject.x ? (
-                    <Text style={styles.tooltipTitle}>{dataObject.x}</Text>
+                    <Text style={styles.tooltipTitle}>{series.seriesName}</Text>
                 ) : null}
                   <View style={{flexDirection: 'row', paddingLeft: 5, alignItems: 'center'}}>
                     <View style={{
@@ -293,6 +315,7 @@ class LineChart extends React.Component {
           </View>
 
           <View>
+          {this.drawlegend(fadeAnim)}
             <ScrollView horizontal>
               <View>
 
