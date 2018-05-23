@@ -246,8 +246,7 @@ export default class ColumnChart extends Component {
         </View>
         <View style={styles.mainContainer}>
           <ScrollView horizontal>
-            {" "}
-            <View>{this.drawlegend(fadeAnim)}</View>{" "}
+            <View>{this.drawlegend(fadeAnim)}</View>
           </ScrollView>
           <ScrollView horizontal>
             <View>

@@ -470,13 +470,14 @@ class LineChart extends React.Component {
           )}
         </View>
         <View>
-          <ScrollView horizontal><View>
-          {this.drawlegend(fadeAnim)}
-            </View> </ScrollView>
-          <ScrollView horizontal
-          style={{
-            paddingRight:40
-          }}
+          <ScrollView horizontal>
+            <View>{this.drawlegend(fadeAnim)}</View>
+          </ScrollView>
+          <ScrollView
+            horizontal
+            style={{
+              paddingRight: 40
+            }}
           >
             <View>
               <View ref="chartView" style={styles.chartViewWrapper}>
