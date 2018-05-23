@@ -276,10 +276,10 @@ export default class ColumnChart extends Component {
           )}
         </View>
         <View style={styles.mainContainer}>
-          <ScrollView horizontal> <View>
-{this.drawlegend(fadeAnim)} 
-          </View></ScrollView>
-          <ScrollView horizontal> 
+          <ScrollView horizontal>
+            <View>{this.drawlegend(fadeAnim)}</View>
+          </ScrollView>
+          <ScrollView horizontal>
             <View>
               <View ref="chartView" style={styles.chartContainer}>
                 {drawYAxis(this.props.yAxisColor)}

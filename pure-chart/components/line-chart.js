@@ -473,7 +473,11 @@ class LineChart extends React.Component {
           <ScrollView horizontal><View>
           {this.drawlegend(fadeAnim)}
             </View> </ScrollView>
-          <ScrollView horizontal>
+          <ScrollView horizontal
+          style={{
+            paddingRight:40
+          }}
+          >
             <View>
               <View ref="chartView" style={styles.chartViewWrapper}>
                 {drawYAxis(this.props.yAxisColor)}
