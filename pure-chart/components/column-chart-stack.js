@@ -157,7 +157,7 @@ export default class ColumnChart extends Component {
           {drawYAxisLabels(this.state.guideArray, this.props.height + 20, this.props.minValue, this.props.labelColor)}
         </View>
         <View style={styles.mainContainer}>
-        {this.drawlegend(fadeAnim)}
+        <ScrollView horizontal>          {this.drawlegend(fadeAnim)} </ScrollView>      
           <ScrollView horizontal>
             <View>
               <View ref='chartView' style={styles.chartContainer}>
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     opacity: 0.8
   },
-  tooltipTitle: {fontSize: 10},
+  tooltipTitle: {fontSize: 8},
   tooltipValue: {fontWeight: 'bold', fontSize: 15},
   tooltipColor: {
     width: 10,

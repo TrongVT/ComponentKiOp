@@ -313,7 +313,7 @@ class LineChart extends React.Component {
             {drawYAxisLabels(this.state.guideArray, this.props.height + 20, this.props.minValue, this.props.labelColor)}
           </View>
           <View>
-          {this.drawlegend(fadeAnim)}
+          <ScrollView horizontal>          {this.drawlegend(fadeAnim)} </ScrollView>      
             <ScrollView horizontal>
               <View>
                 <View ref='chartView' style={styles.chartViewWrapper}>
@@ -418,7 +418,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     justifyContent: 'center'
   },
-  tooltipTitle: {fontSize: 10},
+  tooltipTitle: {fontSize: 8},
   tooltipValue: {fontWeight: 'bold', fontSize: 15}
 })
 
