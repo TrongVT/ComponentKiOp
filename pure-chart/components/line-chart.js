@@ -470,7 +470,10 @@ class LineChart extends React.Component {
           )}
         </View>
         <View>
-          <ScrollView horizontal>
+          <ScrollView horizontal
+          showsHorizontalScrollIndicator= {false}
+          showsVerticalScrollIndicator ={false}
+          >
             <View>{this.drawlegend(fadeAnim)}</View>
           </ScrollView>
           <ScrollView
