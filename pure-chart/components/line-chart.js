@@ -311,16 +311,12 @@ class LineChart extends React.Component {
         }])}>
           <View style={styles.yAxisLabelsWrapper}>
             {drawYAxisLabels(this.state.guideArray, this.props.height + 20, this.props.minValue, this.props.labelColor)}
-
           </View>
-
           <View>
           {this.drawlegend(fadeAnim)}
             <ScrollView horizontal>
               <View>
-
                 <View ref='chartView' style={styles.chartViewWrapper}>
-
                   {drawYAxis(this.props.yAxisColor)}
                   {drawGuideLine(this.state.guideArray, this.props.yAxisGridLineColor)}
                   {this.state.sortedData.map((obj, index) => {
@@ -339,16 +335,12 @@ class LineChart extends React.Component {
                     )
                   })}
                   {this.drawSelected(this.state.selectedIndex)}
-
                 </View>
-
                 {drawXAxis(this.props.xAxisColor)}
                 {drawXAxisLabels(this.state.sortedData[0].data, this.props.gap, this.props.labelColor)}
               </View>
-
             </ScrollView>
           </View>
-
         </View>
       ) : null
 
@@ -363,11 +355,9 @@ LineChart.defaultProps = {
   height: 100,
   gap: 60,
   onPointClick: (point) => {
-
   },
   numberOfYAxisGuideLine: 5
 }
-
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
