@@ -174,8 +174,6 @@ export default class ColumnChart extends Component {
       } else if (selectedIndex === standardSeries.data.length - 1) {
         plusGap = -50;
       }
-      // 차트 width를 마지막에 늘려야겠음.
-
       let left = standardSeries.data[selectedIndex]["gap"] + plusGap;
       let tooltipRenders = [];
       for (let i = 0; i < this.state.sortedData.length; i++) {
@@ -207,9 +205,12 @@ export default class ColumnChart extends Component {
                 style={[
                   styles.tooltipColor,
                   {
-                    backgroundColor: !series.seriesColor
-                      ? this.props.primaryColor
-                      : series.seriesColor
+                    backgroundColor:
+                      series.data[selectedIndex]["colorBar"] == null
+                        ? !series.seriesColor
+                          ? this.props.primaryColor
+                          : series.seriesColor
+                        : series.data[selectedIndex]["colorBar"]
                   }
                 ]}
               />
@@ -276,10 +277,11 @@ export default class ColumnChart extends Component {
           )}
         </View>
         <View style={styles.mainContainer}>
-          <ScrollView horizontal
-             showsHorizontalScrollIndicator= {false}
-             showsVerticalScrollIndicator ={false}
-             >
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+          >
             <View>{this.drawlegend(fadeAnim)}</View>
           </ScrollView>
           <ScrollView horizontal>
