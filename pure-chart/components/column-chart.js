@@ -200,7 +200,12 @@ export default class ColumnChart extends Component {
               style={[
                 styles.tooltipColor,
                 {
-                  backgroundColor: series.data[selectedIndex]['colorBar']==null ? !series.seriesColor ? this.props.primaryColor : series.seriesColor :series.data[selectedIndex]['colorBar']
+                  backgroundColor:
+                    series.data[selectedIndex]["barColor"] == null
+                      ? !series.seriesColor
+                        ? this.props.primaryColor
+                        : series.seriesColor
+                      : series.data[selectedIndex]["barColor"]
                 }
               ]}
             />
@@ -243,9 +248,11 @@ export default class ColumnChart extends Component {
           )}
         </View>
         <View style={styles.mainContainer}>
-          <ScrollView horizontal
-             showsHorizontalScrollIndicator= {false}
-             showsVerticalScrollIndicator ={false}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+          >
             <View>{this.drawlegend(fadeAnim)}</View>
           </ScrollView>
           <ScrollView horizontal>

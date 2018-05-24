@@ -206,11 +206,11 @@ export default class ColumnChart extends Component {
                   styles.tooltipColor,
                   {
                     backgroundColor:
-                      series.data[selectedIndex]["colorBar"] == null
+                      series.data[selectedIndex]["barColor"] == null
                         ? !series.seriesColor
                           ? this.props.primaryColor
                           : series.seriesColor
-                        : series.data[selectedIndex]["colorBar"]
+                        : series.data[selectedIndex]["barColor"]
                   }
                 ]}
               />
