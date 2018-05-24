@@ -20,8 +20,10 @@ export default class ColumnChartItem extends Component {
                 this.props.seriesArray[seriesIndex].data[this.props.dataIndex]["ratioY2"] +
                 this.props.seriesArray[seriesIndex].data[this.props.dataIndex]["ratioY"],
               marginRight: lastElementMarginRight,
-              backgroundColor: this.props.seriesArray[seriesIndex].seriesColor,
-              borderColor: this.props.isSelected? this.props.highlightColor : "#FFFFFF",
+              backgroundColor:
+              this.props.seriesArray[seriesIndex].data[this.props.dataIndex]['barColor'] == null 
+               ? this.props.seriesArray[seriesIndex].seriesColor
+               :   this.props.seriesArray[seriesIndex].data[this.props.dataIndex]['barColor'],              borderColor: this.props.isSelected? this.props.highlightColor : "#FFFFFF",
               alignItems:"center"
             }
           ]}

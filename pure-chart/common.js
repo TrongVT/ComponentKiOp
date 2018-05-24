@@ -141,14 +141,14 @@ export const refineData = (flattenData, max, height, gap) => {
             ratioY2: dataProp[i].y2!=undefined ? dataProp[i].y2 / maxClone * height : 0,
             x: dataProp[i].x,
             y: dataProp[i].y,
-            y2: dataProp[i].y2 != undefined ? dataProp[i].y2 : 0
+            y2: dataProp[i].y2 != undefined ? dataProp[i].y2 : 0,
+            barColor: typeof dataProp[i].barColor != 'undefined' ? dataProp[i].barColor : null
           };
         }
       }
       data.push(dataObject);
     }
 
-    // validation
     let isValidate = false;
     if (simpleTypeCount === length || objectTypeCount === length) {
       isValidate = true;
@@ -157,7 +157,6 @@ export const refineData = (flattenData, max, height, gap) => {
     if (isValidate) {
       object.data = data.sort((a, b) => {
         return a["gap"] - b["gap"];
-        // return a[0] - b[0]
       });
     } else {
       object.data = [];
@@ -342,14 +341,12 @@ export const drawXAxisLabels = (sortedData, gap, color = "#000000") => {
       }}
     >
       {sortedData.map((data, i) => {
-        // if (data[3] && i % 2 === 1) {
         if (data["x"] && i % 2 === 1 || data["x"] && i % 2 === 0 ) {
           return (
             <View
               key={"label" + i}
               style={{
                 position: "absolute",
-                // left: data[0] - gap / 2,
                 left: data["gap"] - 5,
                 top: gap/3,
                 width: gap,
@@ -357,7 +354,6 @@ export const drawXAxisLabels = (sortedData, gap, color = "#000000") => {
             >
               <Text style={{ fontSize: 8, color: color,  transform: [{ rotate: '30deg'}]}}>
                 {
-                  // data[3]
                   data["x"]
                 }
               </Text>
