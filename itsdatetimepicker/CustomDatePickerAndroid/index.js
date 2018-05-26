@@ -19,7 +19,7 @@ export default class CustomDatePickerAndroid extends React.PureComponent {
   static defaultProps = {
     date: new Date(),
     mode: "date",
-    datePickerModeAndroid: "default",
+    datePickerModeAndroid: "spinner",
     is24Hour: true,
     isVisible: false,
     onHideAfterConfirm: () => {}

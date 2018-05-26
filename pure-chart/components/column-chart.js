@@ -68,7 +68,6 @@ export default class ColumnChart extends Component {
       );
     }
   }
-
   componentDidMount() {
     Animated.timing(this.state.fadeAnim, {
       toValue: 1,
