@@ -5,6 +5,8 @@ import { View } from "react-native";
 import LineChart from "./components/line-chart";
 import ColumnChart from "./components/column-chart";
 import ColumnChartStack from "./components/column-chart-stack";
+import PieChart from './components/pie-chart'
+
 export default class PureChart extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,7 @@ export default class PureChart extends React.Component {
     } else if (this.props.type === "bar-stack") {
       return <ColumnChartStack {...this.props} />;
     } else if (this.props.type === "pie") {
+      return <PieChart data={this.props.data} primaryColor={this.props.color} />
     }
   }
   render() {
