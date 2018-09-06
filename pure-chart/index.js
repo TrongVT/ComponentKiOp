@@ -20,7 +20,7 @@ export default class PureChart extends React.Component {
     } else if (this.props.type === "bar-stack") {
       return <ColumnChartStack {...this.props} />;
     } else if (this.props.type === "pie") {
-      return <PieChart data={this.props.data} primaryColor={this.props.color} />
+      return <PieChart size ={this.props.height} data={this.props.data} primaryColor={this.props.color} />
     }
   }
   render() {
