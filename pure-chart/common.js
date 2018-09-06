@@ -317,7 +317,7 @@ export const numberWithCommas = (x, summary = true) => {
     }
   }
 
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + postfix;
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "") + postfix;
 };
 
 export const drawXAxis = (color = "#e0e0e0") => {

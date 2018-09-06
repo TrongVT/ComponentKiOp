@@ -670,7 +670,7 @@ class SectionedMultiSelect extends PureComponent {
         <View>
           {item[subKey] &&
           <FlatList
-            keyExtractor={i => i[uniqueKey]}
+            keyExtractor={i => `${i[uniqueKey]}`}
             data={item[subKey]}
             extraData={selectedItems}
             ItemSeparatorComponent={() => this._renderSeparator(true)}
