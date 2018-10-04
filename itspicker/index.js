@@ -229,18 +229,21 @@ export default class ModalPicker extends React.Component {
   render() {
     return (
       <TouchableOpacity style={this.props.style} onPress={() => this.open()}>
-        <Modal
-          supportedOrientations={["portrait", "landscape"]}
-          transparent={true}
-          backdropColor="transparent"
-          hardwareAccelerated={true}
-          ref={picker => (this.picker = picker)}
-          visible={this.state.modalVisible}
-          onRequestClose={this.close}
-          animationType={this.state.animationType}
-        >
-          {this.renderOptionList()}
-        </Modal>
+        {this.state.modalVisible ? (
+          <View
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              position: "absolute",
+              zIndex: 999,
+              padding: "10%",
+              paddingTop: 30,
+              backgroundColor: "rgba(0,0,0,0.3)"
+            }}
+          >
+            >{this.renderOptionList()}
+          </View>
+        ) : null}
+
         <View
           style={[
             {

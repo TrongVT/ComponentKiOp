@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/TrongVT/ComponentKiOp#readme",
   "dependencies": {
+    "color": "^2.0.1",
+    "create-react-context": "^0.2.2",
+    "hoist-non-react-statics": "^2.5.0",
+    "react-lifecycles-compat": "^3.0.4",
     "moment": "2.19.3",
     "tinymask": "^1.0.2",
     "lodash": "^4.17.5",
