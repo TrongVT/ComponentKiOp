@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/TrongVT/ComponentKiOp#readme",
   "dependencies": {
+    "@callstack/react-theme-provider": "^1.0.3",
     "color": "^2.0.1",
     "create-react-context": "^0.2.2",
     "hoist-non-react-statics": "^2.5.0",
