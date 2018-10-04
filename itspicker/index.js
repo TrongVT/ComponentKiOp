@@ -1,13 +1,7 @@
-import React from "react";
-import { PropTypes } from "prop-types";
-import {
-  View,
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  ViewPropTypes
-} from "react-native";
-import { MaterialCommunityIcons } from "react-native-vector-icons";
+import React from 'react';
+import { PropTypes } from 'prop-types';
+import { View, Text, ScrollView, TouchableOpacity, ViewPropTypes, Modal } from 'react-native';
+import { MaterialCommunityIcons } from 'react-native-vector-icons';
 
 let componentIndex = 0;
 
@@ -25,14 +19,14 @@ const propTypes = {
   cancelStyle: ViewPropTypes.style,
   cancelTextStyle: Text.propTypes.style,
   overlayStyle: ViewPropTypes.style,
-  cancelText: PropTypes.string
+  cancelText: PropTypes.string,
 };
 
 const defaultProps = {
   disabled: false,
   data: [],
   onChange: () => {},
-  initValue: "Select me!",
+  initValue: 'Select me!',
   style: {},
   selectStyle: {},
   optionStyle: {},
@@ -42,22 +36,22 @@ const defaultProps = {
   cancelStyle: {},
   cancelTextStyle: {},
   overlayStyle: {},
-  cancelText: "cancel"
+  cancelText: 'cancel',
 };
 
 export default class ModalPicker extends React.Component {
   constructor() {
     super();
     this.state = {
-      animationType: "slide",
+      animationType: 'slide',
       modalVisible: false,
       transparent: false,
-      selected: "please select"
+      selected: 'please select',
     };
   }
 
   covertlabel(value) {
-    let lb = "";
+    let lb = '';
     this.props.data.forEach(element => {
       if (element.value === value) {
         lb = element.label;
@@ -88,14 +82,14 @@ export default class ModalPicker extends React.Component {
 
   close() {
     this.setState({
-      modalVisible: false
+      modalVisible: false,
     });
   }
 
   open() {
     if (!this.props.disabled) {
       this.setState({
-        modalVisible: true
+        modalVisible: true,
       });
     }
   }
@@ -108,20 +102,18 @@ export default class ModalPicker extends React.Component {
           {
             padding: 8 * 2,
             borderBottomWidth: 1,
-            borderBottomColor: "#ccc"
+            borderBottomColor: '#ccc',
           },
-          this.props.sectionStyle
-        ]}
-      >
+          this.props.sectionStyle,
+        ]}>
         <Text
           style={[
             {
-              textAlign: "center",
-              fontSize: 16
+              textAlign: 'center',
+              fontSize: 16,
             },
-            this.props.sectionTextStyle
-          ]}
-        >
+            this.props.sectionTextStyle,
+          ]}>
           {section.label}
         </Text>
       </View>
@@ -130,30 +122,25 @@ export default class ModalPicker extends React.Component {
 
   renderOption(option, i) {
     return (
-      <TouchableOpacity
-        key={`modalPickeroption${i}`}
-        onPress={() => this.onChange(option)}
-      >
+      <TouchableOpacity key={`modalPickeroption${i}`} onPress={() => this.onChange(option)}>
         <View
           style={[
             {
               padding: 8,
               borderBottomWidth: 1,
-              borderBottomColor: "#ccc"
+              borderBottomColor: '#ccc',
             },
-            this.props.optionStyle
-          ]}
-        >
+            this.props.optionStyle,
+          ]}>
           <Text
             style={[
               {
-                textAlign: "center",
+                textAlign: 'center',
                 fontSize: 16,
-                color: "rgba(0, 118, 255, 0.9)"
+                color: 'rgba(0, 118, 255, 0.9)',
               },
-              this.props.optionTextStyle
-            ]}
-          >
+              this.props.optionTextStyle,
+            ]}>
             {option.label}
           </Text>
         </View>
@@ -175,21 +162,19 @@ export default class ModalPicker extends React.Component {
         style={[
           {
             flex: 1,
-            backgroundColor: "rgba(0,0,0,0.7)",
-            justifyContent: "center",
-            padding: 20
+            backgroundColor: 'rgba(0,0,0,0.7)',
+            justifyContent: 'center',
+            padding: 20,
           },
-          this.props.overlayStyle
+          this.props.overlayStyle,
         ]}
-        key={"modalPicker" + componentIndex}
-      >
+        key={'modalPicker' + componentIndex}>
         <View
           style={{
             flex: 1,
             borderRadius: 5,
-            backgroundColor: "rgba(255,255,255,0.8)"
-          }}
-        >
+            backgroundColor: 'rgba(255,255,255,0.8)',
+          }}>
           <ScrollView keyboardShouldPersistTaps="always">
             <View style={{ paddingHorizontal: 10 }}>{options}</View>
           </ScrollView>
@@ -200,22 +185,20 @@ export default class ModalPicker extends React.Component {
               style={[
                 {
                   borderRadius: 5,
-                  backgroundColor: "rgba(255,255,255,0.8)",
-                  padding: 8
+                  backgroundColor: 'rgba(255,255,255,0.8)',
+                  padding: 8,
                 },
-                this.props.cancelStyle
-              ]}
-            >
+                this.props.cancelStyle,
+              ]}>
               <Text
                 style={[
                   {
-                    textAlign: "center",
-                    color: "#333",
-                    fontSize: 16
+                    textAlign: 'center',
+                    color: '#333',
+                    fontSize: 16,
                   },
-                  this.props.cancelTextStyle
-                ]}
-              >
+                  this.props.cancelTextStyle,
+                ]}>
                 {this.props.cancelText}
               </Text>
             </View>
@@ -228,39 +211,31 @@ export default class ModalPicker extends React.Component {
   render() {
     return (
       <TouchableOpacity style={this.props.style} onPress={() => this.open()}>
-        {this.state.modalVisible ? (
-          <View
-            style={{
-              ...StyleSheet.absoluteFillObject,
-              position: "absolute",
-              zIndex: 999,
-              padding: "10%",
-              paddingTop: 30,
-              backgroundColor: "rgba(0,0,0,0.3)"
-            }}
-          >
-            >{this.renderOptionList()}
-          </View>
-        ) : null}
+        <Modal
+          supportedOrientations={['portrait', 'landscape']}
+          transparent={true}
+          backdropColor="transparent"
+          hardwareAccelerated={true}
+          ref={picker => (this.picker = picker)}
+          visible={this.state.modalVisible}
+          onRequestClose={this.close}
+          animationType={this.state.animationType}>
+          {this.renderOptionList()}
+        </Modal>
 
         <View
           style={[
             {
               flex: 1,
               height: 30,
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between"
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             },
-            this.props.selectStyle
-          ]}
-        >
+            this.props.selectStyle,
+          ]}>
           <Text
-            style={[
-              { color: "#333", fontSize: 16, paddingRight: 22 },
-              this.props.selectTextStyle
-            ]}
-          >
+            style={[{ color: '#333', fontSize: 16, paddingRight: 22 }, this.props.selectTextStyle]}>
             {this.covertlabel(this.state.selected)}
           </Text>
           <Text />
