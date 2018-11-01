@@ -1,17 +1,17 @@
 /* @flow */
 
-import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import React from "react";
+import { StyleSheet, TextInput } from "react-native";
 
-import color from 'color';
-import IconButton from './IconButton';
-import Surface from './Surface';
-import { withTheme } from '../core/theming';
+import color from "color";
+import IconButton from "./IconButton";
+import Surface from "./Surface";
+import { withTheme } from "../core/theming";
 
 class Searchbar extends React.Component {
   _handleClearPress = () => {
     this.clear();
-    this.props.onChangeText && this.props.onChangeText('');
+    this.props.onChangeText && this.props.onChangeText("");
   };
 
   setNativeProps(...args) {
@@ -35,7 +35,15 @@ class Searchbar extends React.Component {
   }
 
   render() {
-    const { placeholder, onIconPress, icon, value, theme, style, ...rest } = this.props;
+    const {
+      placeholder,
+      onIconPress,
+      icon,
+      value,
+      theme,
+      style,
+      ...rest
+    } = this.props;
     const { colors, roundness, dark } = theme;
     const textColor = colors.text;
     const iconColor = dark
@@ -50,19 +58,26 @@ class Searchbar extends React.Component {
       .string();
 
     return (
-      <Surface style={[{ borderRadius: roundness, elevation: 4 }, styles.container, style]}>
+      <Surface
+        style={[
+          { borderRadius: roundness, elevation: 4 },
+          styles.container,
+          style
+        ]}
+      >
         <IconButton
           borderless
           rippleColor={rippleColor}
           onPress={onIconPress}
           color={iconColor}
-          icon={icon || 'search'}
+          icon={icon || "search"}
         />
         <TextInput
           style={[styles.input, { color: textColor }]}
-          placeholder={placeholder || ''}
+          placeholder={placeholder || ""}
           placeholderTextColor={colors.placeholder}
           selectionColor={colors.primary}
+          onSubmitEditing={this.props.onSubmitEditing}
           underlineColorAndroid="transparent"
           returnKeyType="search"
           accessibilityTraits="search"
@@ -92,15 +107,15 @@ class Searchbar extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center"
   },
   input: {
     flex: 1,
     fontSize: 18,
     paddingLeft: 8,
-    alignSelf: 'stretch',
-  },
+    alignSelf: "stretch"
+  }
 });
 
 export default withTheme(Searchbar);
