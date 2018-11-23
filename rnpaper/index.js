@@ -1,4 +1,4 @@
-import List from './components/List/List';
+import  * as List from './components/List/List';
 import Drawer from './components/Drawer/Drawer';
 import Provider from './core/Provider';
 import Colors from './styles/colors';
