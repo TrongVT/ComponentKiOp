@@ -176,17 +176,18 @@ class LineChart extends React.Component {
             ])}
           />
         </View>
-        {!lastCoordinate && seriesIndex === 0 ? (
+        {/* {!lastCoordinate && seriesIndex === 0 ? (
           <View
             style={StyleSheet.flatten([
               styles.guideLine,
               {
                 width: dx,
-                borderRightColor: this.props.xAxisGridLineColor
+                borderRightColor: "rgba(0,0,0,0.1)",
+                borderWidth: StyleSheet.hairlineWidth
               }
             ])}
           />
-        ) : null}
+        ) : null} */}
         {seriesIndex === this.state.sortedData.length - 1 && (
           <TouchableWithoutFeedback
             onPress={() => {
@@ -208,7 +209,7 @@ class LineChart extends React.Component {
                 width: dx,
                 height: "100%",
                 position: "absolute",
-                marginLeft: -1 * dx / 2,
+                marginLeft: (-1 * dx) / 2,
                 backgroundColor: "#FFFFFF01"
               }}
             />
@@ -256,6 +257,7 @@ class LineChart extends React.Component {
     let color = !seriesColor ? this.props.primaryColor : seriesColor;
     if (this.state.selectedIndex === index) {
       color = this.props.selectedColor;
+      size = this.state.selectedIndex === index ? size * 1.7 : size;
     }
 
     return (
@@ -271,6 +273,7 @@ class LineChart extends React.Component {
             {
               width: size,
               height: size,
+              borderRadius: size / 2,
 
               left: point.gap - size / 2,
               bottom: point.ratioY - size / 2,
@@ -385,7 +388,7 @@ class LineChart extends React.Component {
         left = data[index - 1].gap;
         gap = dataObject.gap - left;
       }
-      if (bottom > this.props.height * 2 / 3) {
+      if (bottom > (this.props.height * 2) / 3) {
         reverse = false;
       }
 
@@ -399,7 +402,7 @@ class LineChart extends React.Component {
             }
           ])}
         >
-          <View
+          {/* <View
             style={StyleSheet.flatten([
               styles.selectedLine,
               {
@@ -407,7 +410,7 @@ class LineChart extends React.Component {
                 marginLeft: gap
               }
             ])}
-          />
+          /> */}
 
           <View style={StyleSheet.flatten([styles.selectedBox])}>
             {this.state.sortedData.map(series => {
@@ -470,9 +473,10 @@ class LineChart extends React.Component {
           )}
         </View>
         <View>
-          <ScrollView horizontal
-          showsHorizontalScrollIndicator= {false}
-          showsVerticalScrollIndicator ={false}
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
           >
             <View>{this.drawlegend(fadeAnim)}</View>
           </ScrollView>
