@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { View } from "react-native";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 
-import LineChart from "./components/line-chart";
-import ColumnChart from "./components/column-chart";
-import ColumnChartStack from "./components/column-chart-stack";
-import PieChart from './components/pie-chart'
+import LineChart from './components/line-chart';
+import ColumnChart from './components/column-chart';
+import ColumnChartStack from './components/column-chart-stack';
+import PieChart from './components/pie-chart';
 
 export default class PureChart extends React.Component {
   constructor(props) {
@@ -13,14 +13,14 @@ export default class PureChart extends React.Component {
     this.renderChart = this.renderChart.bind(this);
   }
   renderChart() {
-    if (this.props.type === "line") {
+    if (this.props.type === 'line') {
       return <LineChart {...this.props} />;
-    } else if (this.props.type === "bar") {
+    } else if (this.props.type === 'bar') {
       return <ColumnChart {...this.props} />;
-    } else if (this.props.type === "bar-stack") {
+    } else if (this.props.type === 'bar-stack') {
       return <ColumnChartStack {...this.props} />;
-    } else if (this.props.type === "pie") {
-      return <PieChart size ={this.props.height} data={this.props.data} primaryColor={this.props.color} />
+    } else if (this.props.type === 'pie') {
+      return <PieChart {...this.props} />;
     }
   }
   render() {
@@ -34,11 +34,11 @@ PureChart.propTypes = {
   height: PropTypes.number,
   numberOfYAxisGuideLine: PropTypes.number,
   customValueRenderer: PropTypes.func,
-  backgroundColor: PropTypes.string
+  backgroundColor: PropTypes.string,
 };
 PureChart.defaultProps = {
-  color: "#297AB1",
+  color: '#297AB1',
   height: 100,
   numberOfYAxisGuideLine: 5,
-  backgroundColor: "#FFFFFF"
+  backgroundColor: '#FFFFFF',
 };
