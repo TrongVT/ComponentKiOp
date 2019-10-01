@@ -1,13 +1,6 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  Animated,
-  Easing
-} from "react-native";
-import { numberWithCommas } from "../common";
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, TouchableWithoutFeedback, Animated, Easing } from 'react-native';
+import { numberWithCommas } from '../common';
 
 class PieChart extends React.Component {
   constructor(props) {
@@ -27,7 +20,7 @@ class PieChart extends React.Component {
       selectedIndex: -1,
       labels: [],
       colors: [],
-      fadeAnim: new Animated.Value(0)
+      fadeAnim: new Animated.Value(0),
     };
   }
   test;
@@ -38,7 +31,7 @@ class PieChart extends React.Component {
       toValue: 1,
       easing: Easing.bounce,
       duration: 1000,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start();
   }
   componentWillReceiveProps(nextProps) {
@@ -46,7 +39,7 @@ class PieChart extends React.Component {
       this.setState(
         Object.assign(
           {
-            fadeAnim: new Animated.Value(0)
+            fadeAnim: new Animated.Value(0),
           },
           this.initData(nextProps.data)
         ),
@@ -55,7 +48,7 @@ class PieChart extends React.Component {
             toValue: 1,
             easing: Easing.bounce,
             duration: 1000,
-            useNativeDriver: true
+            useNativeDriver: true,
           }).start();
         }
       );
@@ -115,7 +108,6 @@ class PieChart extends React.Component {
       }
       index++;
     }
-    // piePos에는 각각 시작위치가 라디안 값으로 들어감
     let piePos = [];
     piePos[0] = 0;
     for (let i = 1; i < pieSize.length; i++) {
@@ -132,20 +124,6 @@ class PieChart extends React.Component {
       }
     }
 
-    /*
-    for (let i = 0; i < this.props.data.length; i++) {
-      console.log(oldPiePos[i])
-    }
-    */
-
-    /*
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i].value)
-      console.log(labels[i])
-      console.log(colors[i])
-    }
-    */
-
     this.setState({
       labels: labels,
       colors: colors,
@@ -155,14 +133,10 @@ class PieChart extends React.Component {
       pieIndex: pieIndex,
       angles: angles,
       dataSum: sum,
-      oldPiePos: oldPiePos
+      oldPiePos: oldPiePos,
     });
   }
   handleEventOld(evt) {
-    /* this.setState({
-      evtX: evt.nativeEvent.pageX,
-      evtY: evt.nativeEvent.pageY
-    }) */
     let pageX = evt.nativeEvent.pageX;
     let pageY = evt.nativeEvent.pageY;
     const { angles } = this.state;
@@ -198,42 +172,28 @@ class PieChart extends React.Component {
           inPie: inPie,
           selectedAngle: degree,
           selectedRad: rad,
-          selectedIndex: selectedIndex
+          selectedIndex: selectedIndex,
         });
       });
   }
 
   handleEvent(idx) {
-    //   console.log(idx)
     this.setState({
-      currentPieIdx: this.state.pieIndex[idx]
+      currentPieIdx: this.state.pieIndex[idx],
     });
   }
-  /*
-  handleEvent (a, b, c) {
-    console.log(a)
-    console.log(b)
-    console.log(c)
-  }
-  */
 
   handleEventBak(evt, idx) {
-    /* this.setState({
-      evtX: evt.nativeEvent.pageX,
-      evtY: evt.nativeEvent.pageY
-    }) */
-
-    // console.log(idx)
     let pageX = evt.nativeEvent.pageX;
     let pageY = evt.nativeEvent.pageY;
     this.setState({
-      currentPieIdx: idx
+      currentPieIdx: idx,
     });
     this.test &&
       this.test.measure((fx, fy, width, height, px, py) => {
         this.setState({
           evtX: pageX - px,
-          evtY: pageY - py
+          evtY: pageY - py,
         });
       });
   }
@@ -244,10 +204,7 @@ class PieChart extends React.Component {
     if (dist <= size) {
       let index = -1;
       // 중심 y축 기준으로 오른쪽 왼쪽
-      let pos =
-        x > 0
-          ? Math.PI / 2 - Math.asin(y / dist)
-          : (Math.PI * 3) / 2 + Math.asin(y / dist);
+      let pos = x > 0 ? Math.PI / 2 - Math.asin(y / dist) : (Math.PI * 3) / 2 + Math.asin(y / dist);
       // index 값 정하기 piePos piePos 값보다 pos값이 작을 경우 멈춤
       for (let i = 0; i < this.state.piePos.length; i++) {
         if (this.state.piePos[i] > pos) break;
@@ -262,14 +219,10 @@ class PieChart extends React.Component {
             width: 100,
             height: 80,
             marginLeft: marginLeft,
-            marginTop: marginTop
-          }}
-        >
+            marginTop: marginTop,
+          }}>
           <Text>
-            {Math.round((this.state.pieSize[index] / (2 * Math.PI)) * 10000) /
-              100 +
-              "\n" +
-              this.state.value[index]}{" "}
+            {Math.round((this.state.pieSize[index] / (2 * Math.PI)) * 10000) / 100 + '\n' + this.state.value[index]}{' '}
           </Text>
         </View>
       );
@@ -279,10 +232,7 @@ class PieChart extends React.Component {
   drawInfoT(index) {
     const { size } = this.props;
 
-    let pos =
-      (this.state.oldPiePos[index] +
-        this.state.oldPiePos[(index + 1) % this.state.oldPiePos.length]) /
-      2;
+    let pos = (this.state.oldPiePos[index] + this.state.oldPiePos[(index + 1) % this.state.oldPiePos.length]) / 2;
     if (index + 1 === this.props.data.length) {
       pos += Math.PI;
     }
@@ -290,17 +240,13 @@ class PieChart extends React.Component {
     let y = (-size / 4) * Math.sin(-pos) + size / 2;
 
     if (index !== -1) {
-      let percentage =
-        Math.round((this.props.data[index].value * 1000) / this.state.dataSum) /
-          10 +
-        "%";
+      let percentage = Math.round((this.props.data[index].value * 1000) / this.state.dataSum) / 10 + '%';
       let valueStr = numberWithCommas(this.props.data[index].value, false);
       return (
         <View
           style={{
-            height: size
-          }}
-        >
+            height: size,
+          }}>
           <View
             style={{
               marginLeft: x - 60,
@@ -308,35 +254,29 @@ class PieChart extends React.Component {
               borderWidth: 1,
               borderRadius: 5,
               padding: 5,
-              borderColor: "#e0e0e0",
-              backgroundColor: "#FFFFFF"
-            }}
-          >
+              borderColor: '#e0e0e0',
+              backgroundColor: '#FFFFFF',
+            }}>
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: 'row',
                 paddingLeft: 5,
-                alignItems: "center"
-              }}
-            >
+                alignItems: 'center',
+              }}>
               <View
                 style={{
                   width: 10,
                   height: 5,
                   marginRight: 3,
                   borderRadius: 2,
-                  backgroundColor: this.state.colors[index]
+                  backgroundColor: this.state.colors[index],
                 }}
               />
-              <Text style={styles.tooltipTitle}>
-                {this.state.labels[index] ? this.state.labels[index] : valueStr}
-              </Text>
+              <Text style={styles.tooltipTitle}>{this.state.labels[index] ? this.state.labels[index] : valueStr}</Text>
             </View>
 
             <Text style={styles.tooltipValue}>
-              {this.state.labels[index]
-                ? `${valueStr} (${percentage})`
-                : percentage}
+              {this.state.labels[index] ? `${valueStr} (${percentage})` : percentage}
             </Text>
           </View>
         </View>
@@ -350,9 +290,8 @@ class PieChart extends React.Component {
         <View
           style={{
             width: size,
-            height: size
-          }}
-        >
+            height: size,
+          }}>
           <View
             style={{
               width: 60,
@@ -361,37 +300,29 @@ class PieChart extends React.Component {
               marginTop: y - 40,
               borderWidth: 2,
               borderRadius: 5,
-              borderColor: "#e0e0e0",
-              backgroundColor: "#FFFFFF"
-            }}
-          >
-            {this.state.labels[index] !== null && (
-              <Text>{this.state.labels[index]}</Text>
-            )}
+              borderColor: '#e0e0e0',
+              backgroundColor: '#FFFFFF',
+            }}>
+            {this.state.labels[index] !== null && <Text>{this.state.labels[index]}</Text>}
             <View
               style={{
-                flexDirection: "row",
+                flexDirection: 'row',
                 paddingLeft: 5,
-                alignItems: "center"
-              }}
-            >
+                alignItems: 'center',
+              }}>
               <View
                 style={{
                   width: 10,
                   height: 5,
                   marginRight: 3,
                   borderRadius: 2,
-                  backgroundColor: this.state.colors[index]
+                  backgroundColor: this.state.colors[index],
                 }}
               />
-              <Text style={styles.tooltipValue}>
-                {this.props.data[index].value}
-              </Text>
+              <Text style={styles.tooltipValue}>{this.props.data[index].value}</Text>
             </View>
 
-            <Text style={styles.tooltipValue}>
-              {(this.props.data[index].value * 100) / this.state.dataSum + "%"}
-            </Text>
+            <Text style={styles.tooltipValue}>{(this.props.data[index].value * 100) / this.state.dataSum + '%'}</Text>
           </View>
         </View>
       );
@@ -402,11 +333,7 @@ class PieChart extends React.Component {
     let x = (0 - width / 2) * Math.cos(rad) - (0 - width / 2) * Math.sin(rad);
     let y = (0 - width / 2) * Math.sin(rad) + (0 - width / 2) * Math.cos(rad);
 
-    return [
-      { translateX: -1 * x - width / 2 + add },
-      { translateY: -1 * y - width / 2 },
-      { rotate: rad + "rad" }
-    ];
+    return [{ translateX: -1 * x - width / 2 + add }, { translateY: -1 * y - width / 2 }, { rotate: rad + 'rad' }];
   }
   drawPie(angle, color, big, idx) {
     const { size } = this.props;
@@ -416,21 +343,16 @@ class PieChart extends React.Component {
           <View />
         ) : angle > (1 / 2) * Math.PI ? (
           <View>
-            <View style={{ width: size, height: size / 2 }} />
-            <View
-              style={{ flexDirection: "row", backgroundColor: "transparent" }}
-            >
+            <View style={{ width: size, height: size / 2, overflow: 'hidden' }} />
+            <View style={{ flexDirection: 'row', backgroundColor: 'transparent' }}>
               <View
                 style={{
                   width: size / 2,
                   height: size / 2,
 
-                  transform: this.getTransform(Math.PI / 2, size / 2, size / 2)
-                }}
-              >
-                <View>
-                  {this.drawPie(angle - (1 / 2) * Math.PI, color, false, idx)}
-                </View>
+                  transform: this.getTransform(Math.PI / 2, size / 2, size / 2),
+                }}>
+                <View>{this.drawPie(angle - (1 / 2) * Math.PI, color, false, idx)}</View>
               </View>
 
               <View
@@ -438,37 +360,38 @@ class PieChart extends React.Component {
                   opacity: 1,
 
                   width: size / 2,
-                  height: size / 2
-                }}
-              >
+                  height: size / 2,
+                  overflow: 'hidden',
+                }}>
                 {this.drawPie((1 / 2) * Math.PI, color, false, idx)}
               </View>
             </View>
           </View>
-        ) : // big 사용이유
-        big ? (
+        ) : big ? (
           <View
             style={{
               width: size,
-              height: size
-            }}
-          >
+              height: size,
+              overflow: 'hidden',
+            }}>
             <View style={{ width: size, height: size / 2 }} />
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: 'row' }}>
               <View style={{ width: size / 2, height: size / 2 }} />
               <View
                 style={{
                   width: size / 2,
-                  height: size / 2
-                }}
-              >
+                  height: size / 2,
+                  overflow: 'hidden',
+                }}>
                 <View
                   style={{
                     width: size / 2,
                     height: size / 2,
+                    overflow: 'hidden',
+
                     borderBottomRightRadius: size / 2,
                     backgroundColor: color,
-                    transform: this.getTransform(angle - Math.PI / 2, size / 2)
+                    transform: this.getTransform(angle - Math.PI / 2, size / 2),
                   }}
                 />
               </View>
@@ -478,24 +401,25 @@ class PieChart extends React.Component {
           <View
             style={{
               width: size / 2,
-              height: size / 2
-            }}
-          >
+              height: size / 2,
+              overflow: 'hidden',
+            }}>
             <View
               style={{
                 width: size / 2,
-                height: size / 2
-              }}
-            >
+                height: size / 2,
+                overflow: 'hidden',
+              }}>
               <View
                 style={{
                   width: size / 2,
                   height: size / 2,
+                  overflow: 'hidden',
                   borderBottomRightRadius: size / 2,
                   backgroundColor: color,
                   borderWidth: 0,
                   borderColor: color,
-                  transform: this.getTransform(angle - Math.PI / 2, size / 2)
+                  transform: this.getTransform(angle - Math.PI / 2, size / 2),
                 }}
               />
             </View>
@@ -513,40 +437,24 @@ class PieChart extends React.Component {
           key={`t${i}`}
           style={{
             transform: [{ rotate: `${this.state.piePos[i]}rad` }],
-            position: "absolute"
-          }}
-        >
-          {this.drawPie(
-            this.state.pieSize[i],
-            this.state.colors[this.state.pieIndex[i]],
-            true,
-            i
-          )}
+            position: 'absolute',
+            overflow: 'hidden',
+          }}>
+          {this.drawPie(this.state.pieSize[i], this.state.colors[this.state.pieIndex[i]], true, i)}
         </View>
       );
     }
     return pies;
   }
   render() {
-    const {
-      selectedIndex,
-      locationX,
-      locationY,
-      evtX,
-      evtY,
-      inPie,
-      selectedAngle,
-      pieSize,
-      angles
-    } = this.state;
+    const { selectedIndex, locationX, locationY, evtX, evtY, inPie, selectedAngle, pieSize, angles } = this.state;
     const { size } = this.props;
     return (
       <View collapsable={false}>
         <TouchableWithoutFeedback
           onPress={e => {
             this.handleEventOld(e);
-          }}
-        >
+          }}>
           <Animated.View
             ref="test"
             style={StyleSheet.flatten([
@@ -554,10 +462,9 @@ class PieChart extends React.Component {
               {
                 transform: [{ scaleY: this.state.fadeAnim }],
                 width: size,
-                height: size
-              }
-            ])}
-          >
+                height: size,
+              },
+            ])}>
             {this.drawT()}
             {this.drawInfoT(this.state.selectedIndex)}
           </Animated.View>
@@ -569,18 +476,18 @@ class PieChart extends React.Component {
 
 PieChart.defaultProps = {
   data: [{ value: 10 }, { value: 20 }, { value: 40 }, { value: 100 }],
-  colors: ["#009ef2", "#ff4d7d", "#00c4c3", "#ffd12f", "#e7e9ed"],
-  size: 300
+  colors: ['#009ef2', '#ff4d7d', '#00c4c3', '#ffd12f', '#e7e9ed'],
+  size: 300,
 };
 const styles = StyleSheet.create({
   container: {
-    overflow: "hidden",
+    overflow: 'hidden',
     marginLeft: 0,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  tooltipTitle: { fontSize: 18, fontWeight: "bold" },
-  tooltipValue: { fontSize: 15, marginTop: 5 }
+  tooltipTitle: { fontSize: 18, fontWeight: 'bold' },
+  tooltipValue: { fontSize: 15, marginTop: 5 },
 });
 
 export default PieChart;
